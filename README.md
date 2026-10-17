@@ -24,7 +24,7 @@ Unzip it to a folder you'll keep, e.g. `C:\news-digest` (or `Documents\news-dige
 
 **Option B, with Git:**
 ```
-git clone https://github.com/REPLACE_ME/news-digest.git
+git clone https://github.com/yoggi1234/news-digest.git
 cd news-digest
 ```
 
