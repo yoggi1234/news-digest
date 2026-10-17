@@ -10,6 +10,26 @@ search and your own newspaper PDFs. Everything runs on your own computer. All it
 
 ---
 
+## Quick start on Windows
+
+1. Install **Python 3.9+** from https://www.python.org/downloads/ and **tick "Add python.exe to PATH"** in the installer.
+2. On this page click the green **Code** button → **Download ZIP**, and unzip it to e.g. `C:\news-digest`.
+3. Open that folder in File Explorer, click the address bar, type `cmd` and press Enter. In the black window run:
+   ```bat
+   python -m pip install -r requirements.txt
+   ```
+4. Double-click **`install.bat`** in the folder (lets you type `digest` from any terminal).
+5. Close the window, open a **new** Command Prompt (`Win` → `cmd` → Enter) and run:
+   ```bat
+   digest run today --open
+   ```
+   After about a minute your 12-page PDF opens. It is saved in the `output` folder.
+
+Type `digest` alone for the menu. Skipped step 4? Run it from inside the folder with `digest.bat run today --open`
+(cmd) or `.\digest.bat run today --open` (PowerShell). Something wrong? See [Troubleshooting](#troubleshooting).
+
+---
+
 ## Install (step by step, about 5 minutes)
 
 ### 1. Install Python (once)
