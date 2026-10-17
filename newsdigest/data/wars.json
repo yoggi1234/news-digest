@@ -1,0 +1,237 @@
+{
+  "_note": "Background timelines are fixed history; 2026 events come from the 12-13 Oct 2026 reference editions (The Hindu, TOI/Reuters/AFP, CNN). The live part of the war page comes from today's news. Add or fix events with `digest war add-event`.",
+  "wars": [
+    {
+      "name": "Russia-Ukraine war",
+      "query": "Russia Ukraine war",
+      "keywords": [
+        "ukraine",
+        "russia",
+        "kyiv",
+        "kremlin",
+        "zelensky",
+        "putin",
+        "donbas",
+        "crimea"
+      ],
+      "timeline": [
+        "Feb-Mar 2014: Russia annexes Crimea and backs rebels in eastern Ukraine (Donbas)",
+        "24 Feb 2022: Russia launches a full-scale invasion of Ukraine",
+        "Sep-Nov 2022: Ukraine takes back land in Kharkiv and Kherson; Russia claims four regions",
+        "2023: Ukraine's counteroffensive makes only small gains",
+        "Aug 2024: Ukraine pushes into Russia's Kursk region",
+        "2026: Ukraine hits Russian refineries; Iran war pushes up fuel prices",
+        "Early Oct 2026: Trump announces an energy ceasefire; Kyiv says it learned of it from the media",
+        "12 Oct 2026: Kremlin rejects Zelensky's 60-day truce plan for elections; strikes continue"
+      ],
+      "full_forms": [
+        "Kremlin",
+        "Donbas",
+        "Crimea",
+        "NATO",
+        "EU"
+      ],
+      "short": "RUSSIA-UKRAINE WAR",
+      "india": [
+        "Oil prices: the war and sanctions change the price India pays for fuel.",
+        "Russian oil: India has bought large amounts of Russian crude since 2022, so US-Russia deals matter.",
+        "Diplomacy: India calls for dialogue and peace and talks to both sides."
+      ]
+    },
+    {
+      "name": "Israel-Hamas (Gaza) war",
+      "query": "Gaza Israel Hamas",
+      "keywords": [
+        "gaza",
+        "hamas",
+        "israel",
+        "idf",
+        "rafah",
+        "west bank",
+        "netanyahu"
+      ],
+      "timeline": [
+        "7 Oct 2023: Hamas attacks southern Israel; about 1,200 killed and about 250 taken hostage",
+        "Oct 2023: Israel starts air strikes and then a ground operation in Gaza",
+        "Nov 2023: A week-long truce lets some hostages and prisoners be exchanged",
+        "May 2024: Israel launches an operation in Rafah in southern Gaza",
+        "Jan 2025: A ceasefire and hostage-release deal begins",
+        "Mar 2025: Israel restarts strikes after the ceasefire breaks down",
+        "Oct 2025: A new US-backed ceasefire plan starts"
+      ],
+      "full_forms": [
+        "IDF",
+        "UN",
+        "UNSC",
+        "ICJ"
+      ],
+      "short": "ISRAEL-HAMAS (GAZA) WAR",
+      "india": [
+        "West Asia: India has close ties with both Israel and Arab states, and millions of Indians work in the Gulf.",
+        "India's stand: India supports a two-state solution and has sent humanitarian aid to Gaza."
+      ]
+    },
+    {
+      "name": "Iran war (Israel/US-Iran conflict)",
+      "query": "Iran Israel US strikes",
+      "keywords": [
+        "iran",
+        "tehran",
+        "irgc",
+        "khamenei",
+        "hormuz",
+        "fordow",
+        "natanz"
+      ],
+      "timeline": [
+        "Jun 2025: Israel and the US strike Iran's nuclear sites; a ceasefire ends the '12-day war'",
+        "28 Feb 2026: US and Israel attack Iran; Supreme Leader Khamenei killed",
+        "Early war: a strike on a primary school in Minab kills 160+ girls (The Hindu)",
+        "Mar 2026: reports say Russia gave Iran targeting information",
+        "Spring 2026: global fuel crisis; rupee under pressure; RBI steps in",
+        "Jul 2026: Houthi-Saudi truce collapses, opening a Yemen front",
+        "Jul-Sep 2026: Indian crude basket climbs from $82.04 to $116.09 a barrel",
+        "Sep 2026: suspected Iran-linked plot on the RAF Fairford base in England"
+      ],
+      "full_forms": [
+        "IRGC",
+        "IAEA",
+        "RAF",
+        "PPAC",
+        "OPEC"
+      ],
+      "short": "THE IRAN WAR",
+      "india": [
+        "Fuel and inflation: India imports most of its oil, so the war pushes up prices.",
+        "Rupee: costlier crude means more dollars are needed, which weakens the rupee.",
+        "Indians abroad: Gulf flights and safety risks affect millions of Indians."
+      ]
+    },
+    {
+      "name": "Yemen war (Saudi-led coalition vs Houthis)",
+      "query": "Houthi Yemen Red Sea",
+      "keywords": [
+        "houthi",
+        "yemen",
+        "sanaa",
+        "red sea",
+        "hodeidah",
+        "aden"
+      ],
+      "timeline": [
+        "Sep 2014: Houthi rebels capture Yemen's capital Sanaa",
+        "Mar 2015: Saudi-led coalition starts a war to back Yemen's government",
+        "Apr 2022: UN-brokered truce; large-scale fighting falls",
+        "Nov 2023: Houthis start attacking Red Sea shipping over the Gaza war",
+        "Jan 2026: UAE leaves Yemen under Saudi pressure; southern separatist council (STC) dissolves",
+        "13 Jul 2026: Saudi strike hits Sanaa airport runway; Houthis declare the truce over",
+        "20 Jul 2026: Houthis declare a sea and air blockade on Saudi Arabia",
+        "3-10 Sep 2026: Houthi offensive takes the Red Sea coast and Mocha; oil above $100",
+        "5-11 Oct 2026: Saudi counter-push; Houthis hit airports including Riyadh"
+      ],
+      "full_forms": [
+        "Houthis",
+        "PLC",
+        "STC",
+        "UAE",
+        "UN"
+      ],
+      "short": "YEMEN-SAUDI WAR",
+      "india": [
+        "Oil and rupee: India imports most of its oil, so higher prices weaken the rupee.",
+        "Indians in the Gulf: millions live and work there; flights to Riyadh were cancelled.",
+        "Trade route: the Red Sea carries much of India's trade with Europe."
+      ]
+    },
+    {
+      "name": "Sudan civil war",
+      "query": "Sudan RSF army war",
+      "keywords": [
+        "sudan",
+        "rsf",
+        "khartoum",
+        "darfur",
+        "el fasher",
+        "burhan"
+      ],
+      "timeline": [
+        "15 Apr 2023: Fighting breaks out between the Sudanese army (SAF) and the RSF",
+        "2023: Fighting spreads to Darfur; millions flee their homes",
+        "Aug 2024: Famine is confirmed in the Zamzam camp in Darfur",
+        "Mar 2025: The army retakes the presidential palace in Khartoum",
+        "Oct 2025: The RSF captures El Fasher, the army's last big base in Darfur"
+      ],
+      "full_forms": [
+        "SAF",
+        "RSF",
+        "UN",
+        "AU"
+      ],
+      "short": "SUDAN CIVIL WAR",
+      "india": [
+        "Indians abroad: India evacuated about 3,800 people from Sudan in Operation Kaveri (2023).",
+        "Africa ties: instability hurts India's trade and energy links in East Africa."
+      ]
+    },
+    {
+      "name": "Myanmar civil war",
+      "query": "Myanmar junta resistance",
+      "keywords": [
+        "myanmar",
+        "junta",
+        "arakan",
+        "rakhine",
+        "tatmadaw",
+        "naypyidaw"
+      ],
+      "timeline": [
+        "1 Feb 2021: The military takes power in a coup",
+        "2021: The opposition forms a National Unity Government and armed groups",
+        "Oct 2023: Ethnic armed groups launch 'Operation 1027' and win big areas",
+        "2024: The Arakan Army takes most of Rakhine state near India's Kaladan project",
+        "28 Mar 2025: A strong earthquake hits central Myanmar",
+        "Dec 2025: The junta holds phased elections"
+      ],
+      "full_forms": [
+        "ASEAN",
+        "UN",
+        "BIMSTEC"
+      ],
+      "short": "MYANMAR CIVIL WAR",
+      "india": [
+        "Border security: India shares a long border with Myanmar touching four north-eastern states.",
+        "Projects: the Kaladan transit project to Mizoram runs through war-hit Rakhine.",
+        "Refugees: fighting pushes people into Mizoram and Manipur."
+      ]
+    },
+    {
+      "name": "DR Congo-M23 conflict",
+      "query": "Congo M23 rebels",
+      "keywords": [
+        "congo",
+        "m23",
+        "goma",
+        "kinshasa",
+        "rwanda",
+        "bukavu"
+      ],
+      "timeline": [
+        "2012: M23 rebels first rise in eastern Congo",
+        "2021-22: M23 restarts fighting",
+        "Jan 2025: M23 captures the city of Goma",
+        "Feb 2025: M23 takes Bukavu",
+        "Jun 2025: Congo and Rwanda sign a US-brokered peace deal"
+      ],
+      "full_forms": [
+        "UN",
+        "AU"
+      ],
+      "short": "DR CONGO-M23 CONFLICT",
+      "india": [
+        "Peacekeeping: Indian soldiers serve in the UN mission in Congo (MONUSCO).",
+        "Minerals: Congo has much of the world's cobalt, used in batteries."
+      ]
+    }
+  ],
+  "log": {}
+}

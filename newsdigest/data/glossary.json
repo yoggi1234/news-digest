@@ -1,0 +1,590 @@
+{
+  "AI": {
+    "full": "Artificial Intelligence",
+    "does": "computers doing tasks that need human-like thinking"
+  },
+  "AIIMS": {
+    "full": "All India Institute of Medical Sciences",
+    "does": "top public medical colleges and hospitals"
+  },
+  "ASEAN": {
+    "full": "Association of Southeast Asian Nations",
+    "does": "group of 10 South-East Asian countries for trade and security"
+  },
+  "ASI": {
+    "full": "Archaeological Survey of India",
+    "does": "protects ancient monuments and sites"
+  },
+  "AU": {
+    "full": "African Union",
+    "does": "union of 55 African countries"
+  },
+  "BCCI": {
+    "full": "Board of Control for Cricket in India",
+    "does": "runs cricket in India"
+  },
+  "BEL": {
+    "full": "Bharat Electronics Limited",
+    "does": "government company making defence electronics"
+  },
+  "BIMSTEC": {
+    "full": "Bay of Bengal Initiative for Multi-Sectoral Technical and Economic Cooperation",
+    "does": "7-nation Bay of Bengal grouping"
+  },
+  "BIS": {
+    "full": "Bureau of Indian Standards",
+    "does": "sets quality standards for products"
+  },
+  "BJP": {
+    "full": "Bharatiya Janata Party",
+    "does": "national political party, leads the NDA"
+  },
+  "BRICS": {
+    "full": "Brazil, Russia, India, China, South Africa (and new members)",
+    "does": "group of major emerging economies"
+  },
+  "BRO": {
+    "full": "Border Roads Organisation",
+    "does": "builds roads and bridges in border areas"
+  },
+  "BSE": {
+    "full": "Bombay Stock Exchange",
+    "does": "Asia's oldest stock exchange; runs the Sensex"
+  },
+  "BSF": {
+    "full": "Border Security Force",
+    "does": "guards India's borders with Pakistan and Bangladesh"
+  },
+  "CAG": {
+    "full": "Comptroller and Auditor General of India",
+    "does": "audits government spending (Article 148)"
+  },
+  "CBI": {
+    "full": "Central Bureau of Investigation",
+    "does": "India's main central investigating agency"
+  },
+  "CBDT": {
+    "full": "Central Board of Direct Taxes",
+    "does": "makes policy for income tax"
+  },
+  "CBIC": {
+    "full": "Central Board of Indirect Taxes and Customs",
+    "does": "manages GST and customs"
+  },
+  "CDS": {
+    "full": "Chief of Defence Staff",
+    "does": "senior-most military officer; heads the Department of Military Affairs"
+  },
+  "CEC": {
+    "full": "Chief Election Commissioner",
+    "does": "heads the Election Commission"
+  },
+  "CJI": {
+    "full": "Chief Justice of India",
+    "does": "head of the Supreme Court"
+  },
+  "CM": {
+    "full": "Chief Minister",
+    "does": "head of a state government"
+  },
+  "COP": {
+    "full": "Conference of the Parties",
+    "does": "yearly UN climate meeting"
+  },
+  "CPI": {
+    "full": "Consumer Price Index",
+    "does": "measures change in retail prices (retail inflation)"
+  },
+  "CRPF": {
+    "full": "Central Reserve Police Force",
+    "does": "largest central armed police force; internal security"
+  },
+  "CSIR": {
+    "full": "Council of Scientific and Industrial Research",
+    "does": "runs national science laboratories"
+  },
+  "DRDO": {
+    "full": "Defence Research and Development Organisation",
+    "does": "develops weapons and defence technology"
+  },
+  "DMK": {
+    "full": "Dravida Munnetra Kazhagam",
+    "does": "political party in Tamil Nadu"
+  },
+  "EAM": {
+    "full": "External Affairs Minister",
+    "does": "India's foreign minister"
+  },
+  "ECI": {
+    "full": "Election Commission of India",
+    "does": "conducts elections (Article 324)"
+  },
+  "ED": {
+    "full": "Enforcement Directorate",
+    "does": "investigates money laundering and foreign exchange crimes"
+  },
+  "EEZ": {
+    "full": "Exclusive Economic Zone",
+    "does": "sea area up to 200 nautical miles where a country controls resources"
+  },
+  "EU": {
+    "full": "European Union",
+    "does": "political and economic union of 27 European countries"
+  },
+  "EV": {
+    "full": "Electric Vehicle",
+    "does": "vehicle that runs on battery power"
+  },
+  "FDI": {
+    "full": "Foreign Direct Investment",
+    "does": "long-term investment by foreigners in a country's businesses"
+  },
+  "FPI": {
+    "full": "Foreign Portfolio Investment",
+    "does": "foreign money put into shares and bonds"
+  },
+  "FTA": {
+    "full": "Free Trade Agreement",
+    "does": "deal that cuts taxes on trade between countries"
+  },
+  "FY": {
+    "full": "Financial Year",
+    "does": "April to March in India"
+  },
+  "G7": {
+    "full": "Group of Seven",
+    "does": "group of seven rich democracies"
+  },
+  "G20": {
+    "full": "Group of Twenty",
+    "does": "forum of 19 big economies plus the EU and the African Union"
+  },
+  "GDP": {
+    "full": "Gross Domestic Product",
+    "does": "total value of goods and services produced in a country"
+  },
+  "GST": {
+    "full": "Goods and Services Tax",
+    "does": "single indirect tax on goods and services"
+  },
+  "GSLV": {
+    "full": "Geosynchronous Satellite Launch Vehicle",
+    "does": "ISRO's heavy rocket"
+  },
+  "HAL": {
+    "full": "Hindustan Aeronautics Limited",
+    "does": "government company making aircraft and helicopters"
+  },
+  "IAEA": {
+    "full": "International Atomic Energy Agency",
+    "does": "UN body that checks peaceful use of nuclear energy"
+  },
+  "IAF": {
+    "full": "Indian Air Force",
+    "does": "India's air arm of the armed forces"
+  },
+  "ICC": {
+    "full": "International Criminal Court",
+    "does": "tries people for war crimes and genocide (also: International Cricket Council)"
+  },
+  "ICJ": {
+    "full": "International Court of Justice",
+    "does": "main UN court that settles disputes between countries"
+  },
+  "ICMR": {
+    "full": "Indian Council of Medical Research",
+    "does": "top body for medical research"
+  },
+  "IDF": {
+    "full": "Israel Defense Forces",
+    "does": "Israel's armed forces"
+  },
+  "IIP": {
+    "full": "Index of Industrial Production",
+    "does": "measures growth of factory, mining and power output"
+  },
+  "IIT": {
+    "full": "Indian Institute of Technology",
+    "does": "top engineering institutes"
+  },
+  "IMD": {
+    "full": "India Meteorological Department",
+    "does": "gives weather forecasts and warnings"
+  },
+  "IMF": {
+    "full": "International Monetary Fund",
+    "does": "global lender that watches world economy and helps countries in crisis"
+  },
+  "INC": {
+    "full": "Indian National Congress",
+    "does": "national political party, leads the opposition INDIA bloc"
+  },
+  "INS": {
+    "full": "Indian Naval Ship",
+    "does": "prefix for Indian Navy ships"
+  },
+  "IPO": {
+    "full": "Initial Public Offering",
+    "does": "first sale of a company's shares to the public"
+  },
+  "ISRO": {
+    "full": "Indian Space Research Organisation",
+    "does": "India's space agency"
+  },
+  "ITBP": {
+    "full": "Indo-Tibetan Border Police",
+    "does": "guards the India-China border"
+  },
+  "IWT": {
+    "full": "Indus Waters Treaty",
+    "does": "1960 India-Pakistan river-water sharing treaty"
+  },
+  "J&K": {
+    "full": "Jammu and Kashmir",
+    "does": "Union Territory in the north"
+  },
+  "LAC": {
+    "full": "Line of Actual Control",
+    "does": "de facto border between India and China"
+  },
+  "LoC": {
+    "full": "Line of Control",
+    "does": "military line dividing Jammu and Kashmir between India and Pakistan"
+  },
+  "LCA": {
+    "full": "Light Combat Aircraft",
+    "does": "India's Tejas fighter programme"
+  },
+  "MEA": {
+    "full": "Ministry of External Affairs",
+    "does": "handles India's foreign relations"
+  },
+  "MHA": {
+    "full": "Ministry of Home Affairs",
+    "does": "handles internal security and police matters"
+  },
+  "MoD": {
+    "full": "Ministry of Defence",
+    "does": "runs India's armed forces"
+  },
+  "MoU": {
+    "full": "Memorandum of Understanding",
+    "does": "written agreement to cooperate"
+  },
+  "MoSPI": {
+    "full": "Ministry of Statistics and Programme Implementation",
+    "does": "releases official data like GDP and inflation"
+  },
+  "MP": {
+    "full": "Member of Parliament",
+    "does": "elected member of Lok Sabha or Rajya Sabha (also: Madhya Pradesh)"
+  },
+  "MLA": {
+    "full": "Member of Legislative Assembly",
+    "does": "elected member of a state assembly"
+  },
+  "MPC": {
+    "full": "Monetary Policy Committee",
+    "does": "6-member RBI panel that fixes the repo rate"
+  },
+  "MSME": {
+    "full": "Micro, Small and Medium Enterprises",
+    "does": "small businesses"
+  },
+  "MSP": {
+    "full": "Minimum Support Price",
+    "does": "price at which government buys crops from farmers"
+  },
+  "NASA": {
+    "full": "National Aeronautics and Space Administration",
+    "does": "US space agency"
+  },
+  "NATO": {
+    "full": "North Atlantic Treaty Organization",
+    "does": "military alliance of the US, Canada and European countries"
+  },
+  "NCERT": {
+    "full": "National Council of Educational Research and Training",
+    "does": "makes school textbooks and curriculum"
+  },
+  "NDA": {
+    "full": "National Democratic Alliance",
+    "does": "BJP-led ruling alliance (also: National Defence Academy)"
+  },
+  "NDRF": {
+    "full": "National Disaster Response Force",
+    "does": "special force for disaster rescue"
+  },
+  "NGO": {
+    "full": "Non-Governmental Organisation",
+    "does": "non-profit group not run by government"
+  },
+  "NHAI": {
+    "full": "National Highways Authority of India",
+    "does": "builds and maintains national highways"
+  },
+  "NIA": {
+    "full": "National Investigation Agency",
+    "does": "investigates terrorism cases"
+  },
+  "NITI": {
+    "full": "National Institution for Transforming India (NITI Aayog)",
+    "does": "government policy think tank"
+  },
+  "NPCI": {
+    "full": "National Payments Corporation of India",
+    "does": "runs UPI and RuPay"
+  },
+  "NPT": {
+    "full": "Treaty on the Non-Proliferation of Nuclear Weapons",
+    "does": "treaty to stop spread of nuclear weapons"
+  },
+  "NSA": {
+    "full": "National Security Adviser",
+    "does": "chief adviser to the PM on security"
+  },
+  "NSE": {
+    "full": "National Stock Exchange",
+    "does": "India's biggest stock exchange; runs the Nifty"
+  },
+  "NSO": {
+    "full": "National Statistics Office",
+    "does": "collects and publishes official statistics"
+  },
+  "NTPC": {
+    "full": "National Thermal Power Corporation",
+    "does": "India's largest power producer"
+  },
+  "OBC": {
+    "full": "Other Backward Classes",
+    "does": "socially and educationally backward groups"
+  },
+  "OPEC": {
+    "full": "Organization of the Petroleum Exporting Countries",
+    "does": "group of oil-exporting countries"
+  },
+  "PIB": {
+    "full": "Press Information Bureau",
+    "does": "official news agency of the Government of India"
+  },
+  "PLA": {
+    "full": "People's Liberation Army",
+    "does": "China's armed forces"
+  },
+  "PM": {
+    "full": "Prime Minister",
+    "does": "head of the government"
+  },
+  "PMI": {
+    "full": "Purchasing Managers' Index",
+    "does": "survey showing if business activity is growing (above 50) or shrinking"
+  },
+  "PSLV": {
+    "full": "Polar Satellite Launch Vehicle",
+    "does": "ISRO's reliable workhorse rocket"
+  },
+  "PSU": {
+    "full": "Public Sector Undertaking",
+    "does": "company owned by the government"
+  },
+  "RBI": {
+    "full": "Reserve Bank of India",
+    "does": "India's central bank; controls money supply and regulates banks"
+  },
+  "RSF": {
+    "full": "Rapid Support Forces",
+    "does": "Sudanese paramilitary force fighting the army"
+  },
+  "SAARC": {
+    "full": "South Asian Association for Regional Cooperation",
+    "does": "8-nation South Asian grouping"
+  },
+  "SAF": {
+    "full": "Sudanese Armed Forces",
+    "does": "Sudan's national army"
+  },
+  "SC": {
+    "full": "Supreme Court",
+    "does": "highest court of India (also: Scheduled Castes)"
+  },
+  "SCO": {
+    "full": "Shanghai Cooperation Organisation",
+    "does": "Eurasian security and economic group; India is a member"
+  },
+  "SEBI": {
+    "full": "Securities and Exchange Board of India",
+    "does": "regulates the stock market"
+  },
+  "SIR": {
+    "full": "Special Intensive Revision",
+    "does": "door-to-door checking of the voter list"
+  },
+  "ST": {
+    "full": "Scheduled Tribes",
+    "does": "tribal communities listed in the Constitution"
+  },
+  "UAE": {
+    "full": "United Arab Emirates",
+    "does": "Gulf country of seven emirates"
+  },
+  "UAV": {
+    "full": "Unmanned Aerial Vehicle",
+    "does": "drone; aircraft without a pilot on board"
+  },
+  "UGC": {
+    "full": "University Grants Commission",
+    "does": "regulates and funds universities"
+  },
+  "UK": {
+    "full": "United Kingdom",
+    "does": "country made of England, Scotland, Wales and Northern Ireland"
+  },
+  "UN": {
+    "full": "United Nations",
+    "does": "world body of 193 countries for peace and cooperation"
+  },
+  "UNESCO": {
+    "full": "United Nations Educational, Scientific and Cultural Organization",
+    "does": "UN body for education, science, culture; lists World Heritage Sites"
+  },
+  "UNGA": {
+    "full": "United Nations General Assembly",
+    "does": "main UN body where all members vote"
+  },
+  "UNHRC": {
+    "full": "United Nations Human Rights Council",
+    "does": "UN body that watches human rights"
+  },
+  "UNSC": {
+    "full": "United Nations Security Council",
+    "does": "UN body for world peace; 15 members, 5 with veto power"
+  },
+  "UPI": {
+    "full": "Unified Payments Interface",
+    "does": "instant mobile payment system run by NPCI"
+  },
+  "UPSC": {
+    "full": "Union Public Service Commission",
+    "does": "conducts civil services and defence exams like CDS and NDA"
+  },
+  "US": {
+    "full": "United States",
+    "does": "country in North America; world's largest economy"
+  },
+  "USA": {
+    "full": "United States of America",
+    "does": "same as US; world's largest economy"
+  },
+  "UT": {
+    "full": "Union Territory",
+    "does": "area ruled directly by the Union government"
+  },
+  "WHO": {
+    "full": "World Health Organization",
+    "does": "UN agency for world health"
+  },
+  "WPI": {
+    "full": "Wholesale Price Index",
+    "does": "measures change in wholesale prices"
+  },
+  "WTO": {
+    "full": "World Trade Organization",
+    "does": "sets global trade rules and settles trade disputes"
+  },
+  "Kremlin": {
+    "full": "Kremlin",
+    "does": "Russia's presidential fortress in Moscow; means the Russian government"
+  },
+  "Donbas": {
+    "full": "Donbas",
+    "does": "eastern Ukraine region (Donetsk and Luhansk)"
+  },
+  "Crimea": {
+    "full": "Crimea",
+    "does": "Black Sea peninsula annexed by Russia in 2014"
+  },
+  "Houthis": {
+    "full": "Houthis (Ansar Allah)",
+    "does": "Iran-backed group that controls Sanaa and much of north Yemen"
+  },
+  "IRGC": {
+    "full": "Islamic Revolutionary Guard Corps",
+    "does": "Iran's elite armed force"
+  },
+  "MI5": {
+    "full": "Military Intelligence, Section 5",
+    "does": "Britain's domestic security service"
+  },
+  "RAF": {
+    "full": "Royal Air Force",
+    "does": "Britain's air force"
+  },
+  "PPAC": {
+    "full": "Petroleum Planning and Analysis Cell",
+    "does": "oil ministry body that tracks the Indian crude basket"
+  },
+  "PLC": {
+    "full": "Presidential Leadership Council",
+    "does": "Yemen's internationally recognised government body"
+  },
+  "STC": {
+    "full": "Southern Transitional Council",
+    "does": "southern Yemen separatist group"
+  },
+  "SDRF": {
+    "full": "State Disaster Response Force",
+    "does": "state team that rescues people in floods and accidents"
+  },
+  "DM": {
+    "full": "District Magistrate",
+    "does": "top administrative officer of a district"
+  },
+  "MoS": {
+    "full": "Minister of State",
+    "does": "junior Union minister"
+  },
+  "CNG": {
+    "full": "Compressed Natural Gas",
+    "does": "cleaner fuel used by many buses"
+  },
+  "MONUSCO": {
+    "full": "UN Organization Stabilization Mission in the DR Congo",
+    "does": "UN peacekeeping mission in Congo"
+  },
+  "ISI": {
+    "full": "Inter-Services Intelligence",
+    "does": "Pakistan's main spy agency"
+  },
+  "GSAT": {
+    "full": "Geosynchronous Satellite",
+    "does": "ISRO's series of communication satellites"
+  },
+  "IPL": {
+    "full": "Indian Premier League",
+    "does": "India's T20 cricket league"
+  },
+  "ODI": {
+    "full": "One Day International",
+    "does": "50-over international cricket match"
+  },
+  "HC": {
+    "full": "High Court",
+    "does": "top court of a state"
+  },
+  "FIR": {
+    "full": "First Information Report",
+    "does": "police record that starts a criminal case"
+  },
+  "ANI": {
+    "full": "Asian News International",
+    "does": "Indian news agency"
+  },
+  "GCC": {
+    "full": "Gulf Cooperation Council",
+    "does": "group of six Gulf Arab countries"
+  },
+  "FM": {
+    "full": "Finance Minister",
+    "does": "minister in charge of the economy and the Budget"
+  }
+}

@@ -1,0 +1,17 @@
+# personal data created when the tool runs (each user gets their own)
+config.json
+drafts/
+output/
+state/
+user_data/
+inbox/
+*.pdf
+*.txt
+!requirements.txt
+
+# build / Python leftovers
+news-digest-share.zip
+__pycache__/
+*.pyc
+venv/
+.venv/

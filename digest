@@ -1,0 +1,6 @@
+#!/bin/sh
+# Lets Git Bash, macOS and Linux run "digest" (cmd and PowerShell use digest.bat).
+# Uses python3 only if it really runs (Windows has a fake python3 that opens the Microsoft Store).
+DIR="$(cd "$(dirname "$0")" && pwd)"
+if python3 -c "import sys" >/dev/null 2>&1; then exec python3 "$DIR/digest.py" "$@"; fi
+exec python "$DIR/digest.py" "$@"
