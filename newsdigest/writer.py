@@ -12,7 +12,8 @@ IGNORE_CAPS = {"I", "A", "AM", "PM", "OK", "TV", "ID", "II", "III", "IV", "VI", 
                "NOW", "OUT", "SAYS", "LIVE", "WATCH", "VIDEO", "PHOTOS", "NEWS", "BREAKING", "UPDATE"}
 
 STARTERS = {"The", "A", "An", "This", "That", "These", "Those", "It", "In", "On", "At", "After", "Over", "With",
-            "Amid", "As", "According", "Two", "Three", "Four", "Five", "Several", "Many", "Some", "Its", "Their"}
+            "Amid", "As", "According", "Two", "Three", "Four", "Five", "Several", "Many", "Some", "Its", "Their",
+            "Recently", "Earlier", "Last", "Meanwhile", "However", "Now", "Today", "Yesterday", "On", "During"}
 
 NEGATIVE = re.compile(r"\b(war|attack|strike|killed|dead|clash|protest|row|tension|terror|blast|crisis|"
                       r"sanction|tariff|riot|violence|border|dispute|ban|accused|arrest|fire|flood|cyclone|"

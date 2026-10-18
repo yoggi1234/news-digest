@@ -4,10 +4,15 @@ import os
 import re
 import shutil
 import subprocess
+import threading
 import urllib.parse
 
 from . import util
 from .config import GN
+
+# lxml (inside trafilatura) can crash Python when several threads parse pages at once;
+# downloads still run in parallel, only the parsing takes turns
+_PARSE_LOCK = threading.Lock()
 
 try:
     import feedparser
@@ -55,6 +60,10 @@ def fetch_feed(url, name, hint, date, cfg, tz, log):
         else:
             summary = util.clean_html(e.get("summary", ""))
         title = util.tidy_cut(util.strip_source_suffix(title))
+        if not title or not util.is_english(title):  # the PDF is in English; other scripts print as blanks
+            continue
+        if summary and not util.is_english(summary):
+            summary = ""
         if not title:
             continue
         items.append({
@@ -100,7 +109,9 @@ def fetch_article_text(url, cfg):
         raw = trafilatura.fetch_url(url)
         if not raw:
             return ""
-        return util.clean_html(trafilatura.extract(raw, include_comments=False, include_tables=False) or "")
+        with _PARSE_LOCK:
+            text = trafilatura.extract(raw, include_comments=False, include_tables=False)
+        return util.clean_html(text or "")
     except Exception:
         return ""
 

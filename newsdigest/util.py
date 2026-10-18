@@ -51,18 +51,33 @@ CREDIT_RE = re.compile(r"\|?\s*((photo|image|picture|video)\s*(credit|courtesy|s
                        r"(special arrangement|getty images|\S+)", re.I)
 JUNK_SENT = re.compile(r"(sign ?in|sign up|subscribe|unlock|download the app|click here|newsletter|read more|"
                        r"also read|follow us|log ?in to|whatsapp channel|google news|all rights reserved|"
-                       r"cookie|advertisement|watch the video|listen to)", re.I)
+                       r"cookie|advertisement|watch the video|listen to|report feedback|"
+                       r"thank you for your feedback|feedback has been|translated by ai|share this (article|story)|copy link|"
+                       r"font size|story continues|trending now)", re.I)
+# "Newswise - ATLANTA - ", "NEW DELHI (PTI): ", "THE SI DIPLOMAT Donald Trump ..." (caps kicker before the text)
+DATELINE = re.compile(r"^(?:[A-Z][\w.]+\s+-\s+)?(?:[A-Z][A-Z .,/]{2,40}(?:\(\w+\))?\s*[:\-]\s+|(?:[A-Z]{2,}\s+){3,}(?=[A-Z][a-z]))")
+
+
+def is_english(text):
+    """False for text that is partly in another script (the PDF font can't show it)."""
+    letters = re.findall(r"[^\W\d_]", text)
+    return bool(letters) and sum(1 for ch in letters if ch.isascii() or ch in "éèàçñüöäóíá") / len(letters) > 0.97
 
 
 def sentences(text):
-    """Split into sentences, dropping photo credits, website buttons and repeated sentences."""
+    """Split into sentences, dropping photo credits, website buttons, other-language notices,
+    half sentences and repeated sentences."""
     text = CREDIT_RE.sub(" ", text or "")
     text = re.sub(r"\s+", " ", text).strip()
-    parts = re.split(r"(?<=[.!?])\s+(?=[A-Z\"'(])", text)
+    text = re.sub(r"\s+×\s+", " ¶ ", text)  # a website close button glued between two sentences
+    parts = re.split(r"(?<=[.!?।])\s+(?=[A-Z\"'(])|\s*¶\s*", text)
     out = []
     for p in parts:
         p = re.sub(r"^Loading\W*", "", p.strip(" |"))  # web-page spinner text before the article
-        if len(p) <= 25 or JUNK_SENT.search(p) or is_cut(p):
+        p = DATELINE.sub("", p)
+        if len(p) <= 25 or JUNK_SENT.search(p) or is_cut(p) or not is_english(p):
+            continue
+        if not re.search(r"[.!?][\"'’”)]*$", p):  # a half sentence (text cut off, or a menu/button label)
             continue
         if any(similarity(p, q) > 0.8 for q in out):
             continue
