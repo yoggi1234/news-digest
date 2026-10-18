@@ -3,6 +3,7 @@ Ollama model is running it is used to rewrite paragraphs in simpler, connected E
 import json
 import re
 import threading
+import time
 import urllib.error
 import urllib.request
 
@@ -90,8 +91,15 @@ class Writer:
     def _generate(self, body):
         req = urllib.request.Request(self.cfg["llm"]["url"] + "/api/generate", data=json.dumps(body).encode(),
                                      headers={"Content-Type": "application/json"})
-        with urllib.request.urlopen(req, timeout=180) as r:
-            return json.load(r).get("response", "").strip()
+        for wait in (5, 15, 0):
+            try:
+                with urllib.request.urlopen(req, timeout=180) as r:
+                    return json.load(r).get("response", "").strip()
+            except urllib.error.HTTPError as e:
+                # 429/503 = cloud busy (the free plan runs 1 request at a time): wait and try again
+                if e.code not in (429, 503) or not wait:
+                    raise
+                time.sleep(wait)
 
     @staticmethod
     def _clean_llm(out):
