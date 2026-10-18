@@ -46,6 +46,7 @@ DEFAULT_CONFIG = {
         "page_size": "A4",
         "max_key_points": 5,
         "max_flow_steps": 6,
+        "max_snapshot_stories": 4,         # "other stories" cards, each with 2-3 lines of context
         "max_tiles": 4,
         "max_full_forms": 6,
         "max_also": 3,

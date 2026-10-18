@@ -172,6 +172,26 @@ class Writer:
             para.append(f"In related news, {o['sources'][0]} reported: " + (s[0] if s else o["title"].rstrip(".") + "."))
         return util.whole_sentences(" ".join(para), 1050)
 
+    def context(self, story):
+        """2-3 short lines saying what a story is about, from its own article text ('' if there is none)."""
+        title = util.strip_source_suffix(story["title"])
+        sents = []
+        for s in util.sentences((story.get("text") or "") + " " + (story.get("summary") or "")):
+            s = re.sub(r"^[A-Z][A-Z .,/]{2,40}(\(\w+\))?\s*[:\-]\s+", "", s)  # drop datelines like "NEW DELHI:"
+            if len(s) < 300 and util.similarity(s, title) < 0.7 and not any(util.similarity(s, x) > 0.75 for x in sents):
+                sents.append(s)
+            if len(sents) >= 4:
+                break
+        if not sents:
+            return ""
+        if self.llm_ok:
+            out = self.llm("Explain this news in 2 short sentences of very simple English for a student: what "
+                           "happened and why it matters. Use ONLY the facts given; add nothing new.\nHEADLINE: "
+                           + title + "\nFACTS:\n- " + "\n- ".join(sents) + "\nEXPLANATION:", 120)
+            if len(out) > 40:
+                return util.whole_sentences(out.replace("\n", " "), 280)
+        return util.whole_sentences(" ".join(sents[:2]), 260)
+
     def benefit(self, section, stories, headline):
         negative = bool(NEGATIVE.search(headline)) or section in ("WAR SECTION",)
         label = "WHY IT MATTERS FOR INDIA" if negative else "BENEFIT FOR INDIA"

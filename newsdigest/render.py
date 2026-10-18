@@ -187,7 +187,11 @@ class Page:
         if not steps:
             self.fit_para("<i>No extra stories for this box today.</i>", self.M, top - 18, 300, 20, size=8)
             return top - h
-        rows = [steps] if len(steps) <= 5 else [steps[:(len(steps) + 1) // 2], steps[(len(steps) + 1) // 2:]]
+        cards = not is_flow and any("\n" in str(s) for s in steps)  # headline + a few lines of context
+        if cards:
+            rows = [steps[i:i + 2] for i in range(0, len(steps), 2)]
+        else:
+            rows = [steps] if len(steps) <= 5 else [steps[:(len(steps) + 1) // 2], steps[(len(steps) + 1) // 2:]]
         area_top, area_h = top - 16, h - 16
         row_gap = 12 if len(rows) > 1 else 0
         bh = (area_h - row_gap * (len(rows) - 1)) / len(rows)
@@ -208,6 +212,11 @@ class Page:
                     c.circle(x + 11, y_top - 11, 8, fill=1, stroke=0)
                     self.fit_line(str(num), x + 3, y_top - 14.5, 16, 9, 6, BOLD, white, align="center")
                     pad_left = 22
+                if cards:
+                    head, _, ctx = str(s).partition("\n")
+                    html = f"<b>{safe(head)}</b>" + (f"<br/>{safe(ctx)}" if ctx.strip() else "")
+                    self.fit_para(html, x + 7, y_top - 5, bw - 14, bh - 9, size=8, min_size=5.5)
+                    continue
                 m = re.match(r"^([^:]{2,30}):\s+(.*)$", str(s))
                 if m and pdfmetrics.stringWidth(m.group(1), BOLD, 6) > bw - pad_left - 6:
                     m = None  # label too long for one line: show the whole step as wrapped text instead
@@ -282,11 +291,12 @@ class Page:
     def draw(self, draft, p, total):
         top = self.header(draft, p, total) - 8
         top = self.headline(p, top) - 8
-        top = self.main_box(p, top, 152) - 8
-        top = self.tiles(p, top, 58) - 8
-        top = self.flow(p, top, 120) - 8
-        top = self.columns(p, top, 174) - 8
-        top = self.bottom(p, top, 106) - 6
+        cards = (p.get("flow") or {}).get("mode") != "flow" and any("\n" in str(s) for s in p["flow"].get("steps", []))
+        top = self.main_box(p, top, 152 - 12 * cards) - 8
+        top = self.tiles(p, top, 58 - 6 * cards) - 8
+        top = self.flow(p, top, 120 + 40 * cards) - 8
+        top = self.columns(p, top, 174 - 16 * cards) - 8
+        top = self.bottom(p, top, 106 - 6 * cards) - 6
         self.footer(p, total, top, min(34, top - 26))
 
 
@@ -315,6 +325,10 @@ def text_digest(draft):
         out.append(f"    {p['paragraph']}")
         for k in p.get("key_points", []):
             out.append(f"  * {k}")
+        if (p.get("flow") or {}).get("mode") != "flow":
+            for s in p.get("flow", {}).get("steps", []):
+                head, _, ctx = str(s).partition("\n")
+                out.append(f"  + {head}" + (f": {ctx}" if ctx.strip() else ""))
         for f in p.get("full_forms", []):
             out.append(f"  - {f['abbr']}: {f['full']} ({f['does']})")
         for b in p.get("benefit", []):

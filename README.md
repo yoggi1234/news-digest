@@ -178,6 +178,7 @@ digest correct 2026-10-16 "Deficit was $30.2 bn, not $32 bn"   # printed on the 
 digest config set colors.navy "#14365d"        # any colour in the spec
 digest config set title "ACC Daily Digest"
 digest config set layout.max_key_points 4
+digest config set layout.max_snapshot_stories 4   # "other stories" cards (headline + 2-3 lines each)
 digest config set layout.inline_meanings false
 digest config set llm.mode off
 digest config show

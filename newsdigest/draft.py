@@ -244,8 +244,10 @@ def collect(cfg, date, pdfs=(), war=None, expect=(), no_web=False, log=print, pr
 
     # 6. full text for lead stories (free; skipped if blocked)
     if cfg["web"]["enabled"] and cfg["web"]["fetch_articles"] and not no_web:
+        kp, snap = cfg["layout"]["max_key_points"], cfg["layout"]["max_snapshot_stories"]
         todo = [c for b in list(buckets.values()) + [war_clusters]
-                for c in b[:cfg["web"]["articles_per_section"]] if not c.get("text")]
+                for c in b[:cfg["web"]["articles_per_section"]] + b[1 + kp:1 + kp + snap + 3] if not c.get("text")]
+        todo = list({id(c): c for c in todo}.values())
 
         def grab(c):
             links = [c.get("link")] + [i.get("link") for i in c["items"]]
@@ -408,12 +410,18 @@ def build_page(n, sec, stories, writer, facts, used_facts, cfg):
         return _label(writer.annotate(txt, used), writer.glossary) + f" ({', '.join(c['sources'][:2])}{mark})"
 
     kps = [kp(c) for c in others[:lay["max_key_points"]]]
-    steps = [_label(util.strip_source_suffix(c["title"]), writer.glossary)
-             for c in others[lay["max_key_points"]:lay["max_key_points"] + lay["max_flow_steps"]]]
-    if len(steps) < 3:
-        steps = [_label(util.strip_source_suffix(c["title"]), writer.glossary) for c in others[:lay["max_flow_steps"]]]
+    kp_n, snap_n = lay["max_key_points"], lay["max_snapshot_stories"]
+    pool = others[kp_n:kp_n + snap_n + 3]
+    if len(pool) < 2:
+        pool = others[:snap_n]
+    # each card: full headline, then a line break and 2-3 lines saying what the story is about;
+    # stories whose article gave no context make way for the next ones
+    ctx = [(c, writer.context(c)) for c in pool]
+    snap = ([x for x in ctx if x[1]] + [x for x in ctx if not x[1]])[:snap_n]
+    steps = [(util.strip_source_suffix(c["title"]) + "\n" + t).strip() for c, t in snap]
+    shown = {id(c) for c, _ in snap}
     also = [_label(util.strip_source_suffix(c["title"]), writer.glossary) + ("" if len(c["sources"]) > 1 else " (verify)")
-            for c in others[lay["max_key_points"] + lay["max_flow_steps"]:][:lay["max_also"]]]
+            for c in others[kp_n:] if id(c) not in shown][:lay["max_also"]]
     label, benefit = writer.benefit(name, stories, headline)
     fact = pick_fact(facts, name, page_text, used_facts)
     used_facts.add(fact)
