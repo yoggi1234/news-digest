@@ -264,7 +264,9 @@ def collect(cfg, date, pdfs=(), war=None, expect=(), no_web=False, log=print, pr
                 progress("Downloading full articles", i, len(todo))
         log(f"  Fetched full text for {sum(1 for c in todo if c.get('text'))}/{len(todo)} lead stories")
 
-    # 7. build pages
+    # 7. build pages (AI text, when a model is available, is written first in parallel)
+    if writer.llm_ok:
+        prewrite(cfg, writer, buckets, w, war_clusters, progress)
     used_facts = set()
     pages = []
     for i, sec in enumerate(cfg["sections"], 1):
@@ -376,6 +378,38 @@ def _advanced(fact, page_text, writer, used_words):
     return pts
 
 
+def _snapshot_pool(others, lay):
+    """Candidates for the 'other stories' cards (a few spares for stories with no readable article)."""
+    kp_n, snap_n = lay["max_key_points"], lay["max_snapshot_stories"]
+    pool = others[kp_n:kp_n + snap_n + 3]
+    return pool if len(pool) >= 2 else others[:snap_n]
+
+
+def prewrite(cfg, writer, buckets, war, war_clusters, progress):
+    """Ask the AI model for all page text at once (a few requests in parallel) instead of one by one;
+    build_page then reuses the answers."""
+    jobs = []
+    for sec in cfg["sections"]:
+        if sec.get("war"):
+            if war_clusters:
+                lead = war_clusters[0]
+                jobs.append((writer.paragraph, lead, war_clusters[1:], "WAR SECTION - " + war["name"]))
+                if not war.get("india"):
+                    jobs.append((writer.benefit, "WAR SECTION", war_clusters,
+                                 util.strip_source_suffix(lead["title"])))
+            continue
+        b = buckets[sec["name"]]
+        if not b:
+            continue
+        headline = util.strip_source_suffix(b[0]["title"]).replace("UPDATE: ", "UPDATE - ")
+        jobs.append((writer.paragraph, b[0], b[1:], sec["name"]))
+        jobs.append((writer.benefit, sec["name"], b, headline))
+        jobs += [(writer.context, c) for c in _snapshot_pool(b[1:], cfg["layout"])]
+    with ThreadPoolExecutor(max(1, int(cfg["llm"].get("parallel", 4)))) as ex:
+        for i, _ in enumerate(ex.map(lambda j: j[0](*j[1:]), jobs), 1):
+            progress("Writing with the AI model", i, len(jobs))
+
+
 def build_page(n, sec, stories, writer, facts, used_facts, cfg):
     lay = cfg["layout"]
     name = sec["name"]
@@ -411,9 +445,7 @@ def build_page(n, sec, stories, writer, facts, used_facts, cfg):
 
     kps = [kp(c) for c in others[:lay["max_key_points"]]]
     kp_n, snap_n = lay["max_key_points"], lay["max_snapshot_stories"]
-    pool = others[kp_n:kp_n + snap_n + 3]
-    if len(pool) < 2:
-        pool = others[:snap_n]
+    pool = _snapshot_pool(others, lay)
     # each card: full headline, then a line break and 2-3 lines saying what the story is about;
     # stories whose article gave no context make way for the next ones
     ctx = [(c, writer.context(c)) for c in pool]

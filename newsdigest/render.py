@@ -37,10 +37,15 @@ def DOT():
 
 
 def safe(text):
-    t = escape(str(text or ""))
+    t = escape(str(text or "").translate(ODD_CHARS))
     if FONT == "Helvetica":
         t = t.replace("₹", "Rs ")
     return t
+
+
+# special dashes/spaces many fonts lack (they print as empty boxes)
+ODD_CHARS = {0x2010: "-", 0x2011: "-", 0x2012: "-", 0x2015: "-", 0x2212: "-", 0x00A0: " ", 0x202F: " ",
+             0x2009: " ", 0x200A: " ", 0x2007: " ", 0x200B: "", 0x00AD: ""}
 
 
 class Page:
@@ -84,6 +89,7 @@ class Page:
         return ph
 
     def fit_line(self, text, x, y, w, size, min_size, font, color, align="left"):
+        text = str(text).translate(ODD_CHARS)
         s = size
         while pdfmetrics.stringWidth(text, font, s) > w and s > min_size:
             s -= 0.25

@@ -87,6 +87,11 @@ After about a minute your PDF opens. It's saved in the tool's `output` folder as
 | **pdftotext** (Poppler) | slightly better reading of newspaper PDF layouts | comes with Git for Windows; without it the tool uses `pypdf` |
 | **ocrmypdf** | scanned (photo) newspaper PDFs have no text; this adds it | `pip install ocrmypdf` (also needs Tesseract) |
 
+**Ollama cloud (no download, runs over the internet):** install Ollama, run `ollama signin` (free account), then
+`ollama pull gpt-oss:20b-cloud` and `digest config set llm.model gpt-oss:20b-cloud`. Free tier has usage limits;
+if it is reached or the internet drops, that run simply falls back to normal writing. `llm.parallel` (default 4)
+sets how many requests go at once.
+
 Without Ollama the tool still works fully: it builds paragraphs from real sentences taken from the articles.
 
 ### Troubleshooting
