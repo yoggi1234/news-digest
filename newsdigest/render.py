@@ -63,9 +63,19 @@ class Page:
             if ph <= h or s <= min_size:
                 break
             s -= 0.25
-        if ph > h:  # still too long at the smallest size: cut words until it fits
-            words = html.split(" ")
-            while ph > h and len(words) > 5:
+        if ph > h:  # still too long at the smallest size: drop whole bullets, then whole sentences
+            items = html.split("<br/>")
+            while ph > h and len(items) > 1:
+                items.pop()
+                p = Paragraph("<br/>".join(items), st)
+                _, ph = p.wrap(w, h)
+            sents = re.split(r"(?<=[.!?])\s+(?=[A-Z\"'(<])", items[0])
+            while ph > h and len(sents) > 1:
+                sents.pop()
+                p = Paragraph(" ".join(sents), st)
+                _, ph = p.wrap(w, h)
+            words = " ".join(sents).split(" ")
+            while ph > h and len(words) > 5:  # one very long sentence: last resort
                 words = words[:int(len(words) * 0.9)]
                 p = Paragraph(" ".join(words) + " ...", st)
                 _, ph = p.wrap(w, h)
@@ -199,6 +209,8 @@ class Page:
                     self.fit_line(str(num), x + 3, y_top - 14.5, 16, 9, 6, BOLD, white, align="center")
                     pad_left = 22
                 m = re.match(r"^([^:]{2,30}):\s+(.*)$", str(s))
+                if m and pdfmetrics.stringWidth(m.group(1), BOLD, 6) > bw - pad_left - 6:
+                    m = None  # label too long for one line: show the whole step as wrapped text instead
                 if m:  # "28 Feb 2026: what happened" -> bold title next to the number, text below
                     self.fit_line(m.group(1), x + pad_left, y_top - 14.5, bw - pad_left - 6, 9, 6, BOLD, self.col["text"])
                     self.fit_para(safe(m.group(2)), x + 6, y_top - 21, bw - 11, bh - 24, size=8, min_size=5)

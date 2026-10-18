@@ -155,7 +155,8 @@ class Writer:
                 return out.replace("\n", " ")
         body = sents[:5] or [lead["title"].rstrip(".") + "."]
         para = [self._attribute(body[0], lead["sources"][0])] + body[1:]
-        if lead.get("summary") and not lead.get("text") and lead["summary"] not in " ".join(para):
+        if (lead.get("summary") and not lead.get("text") and not util.is_cut(lead["summary"])
+                and lead["summary"] not in " ".join(para)):
             para.append(lead["summary"])
         # other outlets' headlines on the same story usually add a detail each
         seen = [lead["title"]]
@@ -169,7 +170,7 @@ class Writer:
         for o in others[:1]:
             s = util.sentences(o.get("summary") or "")
             para.append(f"In related news, {o['sources'][0]} reported: " + (s[0] if s else o["title"].rstrip(".") + "."))
-        return util.short(" ".join(para), 1050)
+        return util.whole_sentences(" ".join(para), 1050)
 
     def benefit(self, section, stories, headline):
         negative = bool(NEGATIVE.search(headline)) or section in ("WAR SECTION",)
@@ -194,7 +195,7 @@ class Writer:
             if out:
                 return label, out
         if pool:
-            return label, [util.short(p, 170) for p in pool[:2]]
+            return label, pool[:2]
         return label, ["No direct India angle was stated in today's sources - add one with "
                        "`digest edit` if needed (verify)."]
 

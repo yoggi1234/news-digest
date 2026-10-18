@@ -23,8 +23,28 @@ def clean_html(s):
 
 
 def strip_source_suffix(title):
-    """Google News titles end with ' - Publisher'."""
+    """Google News titles end with ' - Publisher' (some sites add ' | Publisher')."""
+    title = re.sub(r"\s+\|\s+[^|]{2,40}$", "", title)
     return re.sub(r"\s+-\s+[^-]{2,40}$", "", title).strip()
+
+
+CUT_END = re.compile(r"(\.\.\.|…|\[…\]|\[\.\.\.\])\s*$")
+
+
+def is_cut(text):
+    """True for feed snippets that stop mid-sentence ('... sent to the...')."""
+    return bool(CUT_END.search(text or ""))
+
+
+def tidy_cut(text):
+    """A feed title cut by the publisher ('... IAF's new satellite, Agniv...') ends at its last full phrase."""
+    if not is_cut(text):
+        return text
+    body = CUT_END.sub("", text).rstrip()
+    m = list(re.finditer(r"[.?!:;,](?=\s)", body))
+    if m and m[-1].end() >= len(body) * 0.4:
+        return body[:m[-1].end()].rstrip(",;:")
+    return body.rsplit(" ", 1)[0].rstrip(",;:-") if " " in body else body
 
 
 CREDIT_RE = re.compile(r"\|?\s*((photo|image|picture|video)\s*(credit|courtesy|source)s?|file (photo|image|picture))\s*:\s*"
@@ -41,8 +61,8 @@ def sentences(text):
     parts = re.split(r"(?<=[.!?])\s+(?=[A-Z\"'(])", text)
     out = []
     for p in parts:
-        p = p.strip(" |")
-        if len(p) <= 25 or JUNK_SENT.search(p):
+        p = re.sub(r"^Loading\W*", "", p.strip(" |"))  # web-page spinner text before the article
+        if len(p) <= 25 or JUNK_SENT.search(p) or is_cut(p):
             continue
         if any(similarity(p, q) > 0.8 for q in out):
             continue
@@ -159,3 +179,16 @@ def short(text, n):
         return text
     cut = text[:n].rsplit(" ", 1)[0]
     return cut.rstrip(",;:-") + "..."
+
+
+def whole_sentences(text, n):
+    """Keep whole sentences up to about n characters, so the text never stops mid-sentence."""
+    text = (text or "").strip()
+    if len(text) <= n:
+        return text
+    out = ""
+    for s in re.split(r"(?<=[.!?\"])\s+(?=[A-Z\"'(])", text):
+        if out and len(out) + 1 + len(s) > n:
+            break
+        out = (out + " " + s).strip()
+    return out

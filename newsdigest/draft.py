@@ -388,7 +388,7 @@ def build_page(n, sec, stories, writer, facts, used_facts, cfg):
         return page
     lead, others = stories[0], stories[1:]
     used = set()
-    headline = lead["title"].replace("UPDATE: ", "UPDATE - ")
+    headline = util.strip_source_suffix(lead["title"]).replace("UPDATE: ", "UPDATE - ")
     raw_para = writer.paragraph(lead, others, name)
     para = writer.annotate(raw_para, used)
     page_text = " ".join([headline, raw_para] + [o["title"] for o in others[:8]])
@@ -403,16 +403,16 @@ def build_page(n, sec, stories, writer, facts, used_facts, cfg):
 
     def kp(c):
         s = util.sentences(c.get("summary") or "")
-        txt = s[0] if s and len(s[0]) < 230 else c["title"]
+        txt = s[0] if s and len(s[0]) < 230 else util.strip_source_suffix(c["title"])
         mark = "" if len(c["sources"]) > 1 else "; verify"
         return _label(writer.annotate(txt, used), writer.glossary) + f" ({', '.join(c['sources'][:2])}{mark})"
 
     kps = [kp(c) for c in others[:lay["max_key_points"]]]
-    steps = [_label(util.short(c["title"], 70), writer.glossary)
+    steps = [_label(util.strip_source_suffix(c["title"]), writer.glossary)
              for c in others[lay["max_key_points"]:lay["max_key_points"] + lay["max_flow_steps"]]]
     if len(steps) < 3:
-        steps = [_label(util.short(c["title"], 70), writer.glossary) for c in others[:lay["max_flow_steps"]]]
-    also = [_label(util.short(c["title"], 90), writer.glossary) + ("" if len(c["sources"]) > 1 else " (verify)")
+        steps = [_label(util.strip_source_suffix(c["title"]), writer.glossary) for c in others[:lay["max_flow_steps"]]]
+    also = [_label(util.strip_source_suffix(c["title"]), writer.glossary) + ("" if len(c["sources"]) > 1 else " (verify)")
             for c in others[lay["max_key_points"] + lay["max_flow_steps"]:][:lay["max_also"]]]
     label, benefit = writer.benefit(name, stories, headline)
     fact = pick_fact(facts, name, page_text, used_facts)
@@ -442,10 +442,10 @@ def build_war_page(n, sec, war, why, stories, writer, facts, used_facts, cfg):
     room = 8 - (1 if latest else 0)
     steps = timeline[-room:] if len(timeline) > room else timeline
     if latest:
-        steps.append("Now: " + util.short(latest["title"], 80))
+        steps.append("Now: " + util.strip_source_suffix(latest["title"]))
     if latest:
         raw = writer.paragraph(latest, stories[1:], "WAR SECTION - " + war["name"])
-        headline = latest["title"]
+        headline = util.strip_source_suffix(latest["title"])
     else:
         raw = (f"No fresh {war['name']} story was found in today's free sources; the flowchart shows the "
                "background only. Check again or add newspaper PDFs.")
@@ -454,7 +454,7 @@ def build_war_page(n, sec, war, why, stories, writer, facts, used_facts, cfg):
     kps = []
     for c in stories[1:lay["max_key_points"] + 1]:
         mark = "" if len(c["sources"]) > 1 else "; verify"
-        kps.append(_label(writer.annotate(c["title"], used), writer.glossary) + f" ({', '.join(c['sources'][:2])}{mark})")
+        kps.append(_label(writer.annotate(util.strip_source_suffix(c["title"]), used), writer.glossary) + f" ({', '.join(c['sources'][:2])}{mark})")
     tiles = util.key_figures(" ".join((c.get("text") or c.get("summary") or c["title"]) for c in stories[:3]),
                              lay["max_tiles"])
     if len(tiles) < 3:
@@ -472,7 +472,7 @@ def build_war_page(n, sec, war, why, stories, writer, facts, used_facts, cfg):
         key_points=kps, full_forms=writer.full_forms_for(page_text, war.get("full_forms", []))[:lay["max_full_forms"]],
         benefit_label="WHY IT MATTERS FOR INDIA", benefit=benefit,
         advanced=_advanced(fact, page_text, writer, used_facts),
-        also=[_label(util.short(c["title"], 90), writer.glossary) + ("" if len(c["sources"]) > 1 else " (verify)")
+        also=[_label(util.strip_source_suffix(c["title"]), writer.glossary) + ("" if len(c["sources"]) > 1 else " (verify)")
               for c in stories[lay["max_key_points"] + 1:lay["max_key_points"] + 3]] +
              ["Wars covered recently: " + ", ".join(
                  f"{util.parse_date(k).strftime('%d %b')}: {v.split(' (')[0]}"

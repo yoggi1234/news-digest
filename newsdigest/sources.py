@@ -54,6 +54,7 @@ def fetch_feed(url, name, hint, date, cfg, tz, log):
             summary = ""
         else:
             summary = util.clean_html(e.get("summary", ""))
+        title = util.tidy_cut(util.strip_source_suffix(title))
         if not title:
             continue
         items.append({
